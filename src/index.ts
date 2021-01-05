@@ -1,4 +1,4 @@
-import { getLine, write } from './utils/inputOutput';
+import { getLine, write } from './utils/inputOutput.ts';
 import Hiragana from './data/hiragana.ts';
 
 const getRandomItem = (object: any) => {
