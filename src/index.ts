@@ -1,3 +1,4 @@
+import { getLine, write } from './utils/inputOutput';
 import Hiragana from './data/hiragana.ts';
 
 const getRandomItem = (object: any) => {
@@ -8,19 +9,6 @@ const getRandomItem = (object: any) => {
     question: object[randomKey],
     answer: randomKey,
   };
-};
-
-const getLine = async () => {
-  const buffer = new Uint8Array(1024);
-  const bytes = <number>await Deno.stdin.read(buffer);
-  const line = new TextDecoder().decode(buffer.subarray(0, bytes)).trim();
-
-  return line;
-};
-
-const write = (message: string) => {
-  const text = new TextEncoder().encode(message);
-  Deno.writeAll(Deno.stdout, text);
 };
 
 write('enter question count: ');
