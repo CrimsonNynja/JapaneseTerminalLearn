@@ -1,9 +1,9 @@
-const Katakana = {
-  'a': 'ア',
-  'e': 'エ',
-  'i': 'イ',
-  'o': 'オ',
-  'u': 'ウ',
-};
+const Katakana = [
+  { 'english': 'a', 'kanamoji': 'ア' },
+  { 'english': 'e', 'kanamoji': 'エ' },
+  { 'english': 'i', 'kanamoji': 'イ' },
+  { 'english': 'o', 'kanamoji': 'オ' },
+  { 'english': 'u', 'kanamoji': 'ウ' },
+];
 
 export default Katakana;

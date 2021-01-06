@@ -1,6 +1,10 @@
-const Animals = {
-  'dog': {'kanji': '犬', 'hiragana': 'いぬ'}
-};
+const Animals = [
+  {
+    'english': 'dog',
+    'kanji': '犬',
+    'kanamoji': 'いぬ',
+  },
+];
 
 
 

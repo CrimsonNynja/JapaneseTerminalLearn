@@ -2,12 +2,10 @@ import { getLine, write } from './utils/inputOutput.ts';
 import Hiragana from './data/hiragana.ts';
 
 const getRandomItem = (object: any) => {
-  const keys = Object.keys(object);
-  const randomIndex = Math.floor(Math.random() * keys.length);
-  const randomKey = keys[randomIndex];
+  const randomIndex = Math.floor(Math.random() * object.length);
   return {
-    question: object[randomKey],
-    answer: randomKey,
+    question: object[randomIndex].kanamoji,
+    answer: object[randomIndex].english,
   };
 };
 
