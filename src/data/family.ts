@@ -1,6 +1,6 @@
 const Family = [
   {
-    'english': 'younger sister',
+    'english': ['younger sister', 'little sister'],
     'kanji': '妹',
     'kanamoji': 'いもうと',
   }
