@@ -54,7 +54,7 @@ for (let i = 0; i < Number(questionCount); i++) {
     console.log('✅');
     correctCount += 1;
   } else {
-    console.log('❌');
+    console.log('❌ correct answer is ' + JSON.stringify(answer));
   }
 }
 console.log('questions answered correctly ' + correctCount + '/' + questionCount);
