@@ -6,6 +6,7 @@ import Numbers from './data/numbers.ts';
 import Food from './data/food.ts';
 import Family from './data/family.ts';
 import Animals from './data/animals.ts';
+import Pleasantries from './data/pleasantries.ts';
 
 const getRandomItem = (object: any) => {
   const randomIndex = Math.floor(Math.random() * object.length);
@@ -45,6 +46,7 @@ for (let i = 0; i < Number(questionCount); i++) {
     ...Food,
     ...Family,
     ...Animals,
+    ...Pleasantries,
   ]);
   write('enter translation ' + question + ': ');
   const line = await getLine();
