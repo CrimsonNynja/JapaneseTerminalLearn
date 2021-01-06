@@ -1,7 +1,6 @@
 const Numbers = [
   {
-    'english': 'one',
-    'numeral': '1',
+    'english': ['one', '1'],
     'kanji': '一',
     'kanamoji': 'いち',
   },
