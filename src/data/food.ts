@@ -34,7 +34,12 @@ const Food = [
   {
     'english': 'bread',
     'kanamoji': 'パン',
-  }
+  },
+  {
+    'english': 'fish',
+    'kanji': '魚',
+    'kanamoji': 'さかな',
+  },
 ];
 
 export default Food;
