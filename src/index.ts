@@ -11,6 +11,7 @@ import Animals from './data/animals.ts';
 import Pleasantries from './data/pleasantries.ts';
 import House from './data/house.ts';
 import Education from './data/education.ts';
+import Time from './data/time.ts';
 
 const isAnswerCorrect = (answer: string | string[], given: string) => {
   if(Array.isArray(answer)) {
@@ -39,6 +40,7 @@ const dict = combineDicts([
   ...Pleasantries,
   ...House,
   ...Education,
+  ...Time,
 ], [...Education]);
 
 let correctCount = 0;
