@@ -24,6 +24,16 @@ const House = [
     'kanji': '風呂',
     'kanamoji': 'ふろ',
   },
+  {
+    'english': 'garden',
+    'kanji': '庭',
+    'kanamoji': 'にわ',
+  },
+  {
+    'english': 'house',
+    'kanji': '家',
+    'kanamoji': 'いえ',
+  },
 ];
 
 export default House;
