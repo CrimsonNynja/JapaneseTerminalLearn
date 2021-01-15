@@ -12,6 +12,7 @@ import Pleasantries from './data/pleasantries.ts';
 import House from './data/house.ts';
 import Education from './data/education.ts';
 import Time from './data/time.ts';
+import Places from './data/places.ts';
 
 const isAnswerCorrect = (answer: string | string[], given: string) => {
   if(Array.isArray(answer)) {
@@ -41,6 +42,7 @@ const dict = combineDicts([
   ...House,
   ...Education,
   ...Time,
+  ...Places,
 ], [...Education]);
 
 let correctCount = 0;
