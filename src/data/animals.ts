@@ -14,6 +14,11 @@ const Animals = [
     'kanji': '猫',
     'kanamoji': 'ねこ',
   },
+  {
+    'english': 'fish',
+    'kanji': '魚',
+    'kanamoji': 'さかな',
+  },
 ];
 
 
