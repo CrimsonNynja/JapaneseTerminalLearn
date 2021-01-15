@@ -1,21 +1,21 @@
 const Education = [
   {
-    'english': 'teacher',
-    'kanji': '先生',
-    'kanamoji': 'せんせい',
-    'jlp': 5,
+    english: 'teacher',
+    kanji: '先生',
+    kanamoji: 'せんせい',
+    jlp: 5,
   },
   {
-    'english': ['uni', 'university'],
-    'kanji': '大学',
-    'kanamoji': 'だいがく',
-    'jlp': 5
+    english: ['uni', 'university'],
+    kanji: '大学',
+    kanamoji: 'だいがく',
+    jlp: 5
   },
   {
-    'english': 'student',
-    'kanji': '学生',
-    'kanamoji': 'がくせ',
-    'jlp': 5,
+    english: 'student',
+    kanji: '学生',
+    kanamoji: 'がくせ',
+    jlp: 5,
   },
 ];
 

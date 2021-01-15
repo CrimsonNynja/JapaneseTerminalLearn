@@ -1,11 +1,11 @@
 const Pleasantries = [
   {
-    'english': ['hello', 'hi'],
-    'kanamoji': 'こにちは',
+    english: ['hello', 'hi'],
+    kanamoji: 'こにちは',
   },
   {
-    'english': 'welcome',
-    'kanamoji': 'ようこそ',
+    english: 'welcome',
+    kanamoji: 'ようこそ',
   },
 ];
 
