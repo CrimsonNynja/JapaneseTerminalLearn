@@ -33,7 +33,12 @@ const Family = [
     'english': ['I', 'i', 'me'],
     'kanji': '私',
     'kanamoji': 'わたし',
-  }
+  },
+  {
+    'english': ['younger brother', 'little brother'],
+    'kanji': '弟',
+    'kanamoji': 'おとうと',
+  },
 ];
 
 export default Family;
