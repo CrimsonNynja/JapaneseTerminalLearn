@@ -1,4 +1,4 @@
-const Places = [
+const Locations = [
   {
     'english': 'tokyo',
     'kanji': '東京',
@@ -26,4 +26,4 @@ const Places = [
   },
 ];
 
-export default Places;
+export default Locations;

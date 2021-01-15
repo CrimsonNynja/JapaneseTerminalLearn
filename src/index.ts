@@ -3,7 +3,7 @@ import { combineDicts, pullItemAndRemoveFromDict } from './utils/dictUtils.ts';
 import { dictEntryToQuestionAnswer } from './utils/transformers.ts';
 import Hiragana from './data/hiragana.ts';
 import Katakana from './data/katakana.ts';
-import Places from './data/places.ts';
+import Locations from './data/locations.ts';
 import Numbers from './data/numbers.ts';
 import Food from './data/food.ts';
 import Family from './data/family.ts';
@@ -32,7 +32,7 @@ const questionCount = await getLine();
 const dict = combineDicts([
   ...Hiragana,
   ...Katakana,
-  ...Places,
+  ...Locations,
   ...Numbers,
   ...Food,
   ...Family,
