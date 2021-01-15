@@ -1,4 +1,6 @@
 import { getLine, write } from './utils/inputOutput.ts';
+import { combineDicts, pullItemAndRemoveFromDict } from './utils/dictUtils.ts';
+import { dictEntryToQuestionAnswer } from './utils/transformers.ts';
 import Hiragana from './data/hiragana.ts';
 import Katakana from './data/katakana.ts';
 import Places from './data/places.ts';
@@ -9,18 +11,6 @@ import Animals from './data/animals.ts';
 import Pleasantries from './data/pleasantries.ts';
 import House from './data/house.ts';
 import Education from './data/education.ts';
-
-const getRandomItem = (object: any) => {
-  const randomIndex = Math.floor(Math.random() * object.length);
-  let question = object[randomIndex].kanji
-  if (!question) {
-    question = object[randomIndex].kanamoji;
-  }
-  return {
-    question,
-    answer: object[randomIndex].english,
-  };
-};
 
 const isAnswerCorrect = (answer: string | string[], given: string) => {
   if(Array.isArray(answer)) {
@@ -38,20 +28,22 @@ const isAnswerCorrect = (answer: string | string[], given: string) => {
 write('enter question count: ');
 const questionCount = await getLine();
 
+const dict = combineDicts([
+  ...Hiragana,
+  ...Katakana,
+  ...Places,
+  ...Numbers,
+  ...Food,
+  ...Family,
+  ...Animals,
+  ...Pleasantries,
+  ...House,
+  ...Education,
+], [...Education]);
+
 let correctCount = 0;
 for (let i = 0; i < Number(questionCount); i++) {
-  const { question, answer } = getRandomItem([
-    ...Hiragana,
-    ...Katakana,
-    ...Places,
-    ...Numbers,
-    ...Food,
-    ...Family,
-    ...Animals,
-    ...Pleasantries,
-    ...House,
-    ...Education,
-  ]);
+  const { question, answer } = dictEntryToQuestionAnswer(pullItemAndRemoveFromDict(dict));
   write('enter translation ' + question + ': ');
   const line = await getLine();
   if (isAnswerCorrect(answer, line)) {
