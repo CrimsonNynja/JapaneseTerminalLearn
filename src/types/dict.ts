@@ -3,6 +3,7 @@ export interface DictWord {
   kanji?: String,
   kanamoji: String | String[],
   jlp?: number,
+  modifiers?: DictWord[],
 };
 
 export type Dict = DictWord[];
