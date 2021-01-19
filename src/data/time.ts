@@ -1,8 +1,9 @@
 const Time = [
   {
-    english: ['now', 'right now'],
+    english: ['now', 'right now', 'just now'],
     kanji: '今',
     kanamoji: 'いま',
+    jlp: 5.
   },
   {
     english: ['hour', 'o\'clock', 'oclock'],
@@ -13,6 +14,19 @@ const Time = [
     english: 'minute',
     kanji: '分',
     kanamoji: 'ふん',
+    jlp: 3,
+  },
+  {
+    english: ['am', 'AM', 'A.M.', 'morning'],
+    kanji: '午前',
+    kanamoji: 'ごぜん',
+    jlp: 5,
+  },
+  {
+    english: ['pm', 'PM', 'P.M.', 'afternoon'],
+    kanji: '午後',
+    kanamoji: 'ごご',
+    jlp: 5,
   },
 ];
 
