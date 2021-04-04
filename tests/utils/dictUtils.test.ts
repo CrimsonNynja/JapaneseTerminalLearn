@@ -1,4 +1,4 @@
-import { assertEquals } from "https://deno.land/std@0.83.0/testing/asserts.ts";
+import { assertEquals } from "https://deno.land/std@0.92.0/testing/asserts.ts";
 import { combineDicts, pullItemAndRemoveFromDict } from '../../src/utils/dictUtils.ts';
 
 Deno.test("combineDicts combines 2 distinct sets", () => {
