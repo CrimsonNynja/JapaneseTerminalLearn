@@ -11,7 +11,7 @@ const Time = [
     kanamoji: 'じ',
   },
   {
-    english: 'minute',
+    english: ['minute', 'minutes'],
     kanji: '分',
     kanamoji: 'ふん',
     jlp: 3,
