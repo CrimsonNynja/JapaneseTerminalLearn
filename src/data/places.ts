@@ -6,6 +6,7 @@ const Places = [
   {
     english: 'restaurant',
     kanamoji: 'レストラン',
+    jlp: 5,
   },
 ];
 

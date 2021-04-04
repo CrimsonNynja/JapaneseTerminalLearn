@@ -18,6 +18,7 @@ const Locations = [
     english: 'japan',
     kanji: '日本',
     kanamoji: 'にほん',
+    jlp: 3,
   },
   {
     english: 'china',
