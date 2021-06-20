@@ -1,4 +1,6 @@
-const Locations = [
+import { Dict } from '../types/dict.ts';
+
+const Locations: Dict = [
   {
     english: 'tokyo',
     kanji: '東京',

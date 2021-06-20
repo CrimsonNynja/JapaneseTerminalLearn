@@ -1,4 +1,6 @@
-const Hiragana = [
+import { Dict } from '../types/dict.ts';
+
+const Hiragana: Dict = [
   { english: 'a', kanamoji: 'あ' },
   { english: 'e', kanamoji: 'え' },
   { english: 'i', kanamoji: 'い' },

@@ -1,4 +1,6 @@
-const Time = [
+import { Dict } from '../types/dict.ts';
+
+const Time: Dict = [
   {
     english: ['now', 'right now', 'just now'],
     kanji: '今',

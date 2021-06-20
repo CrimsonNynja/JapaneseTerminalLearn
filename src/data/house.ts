@@ -1,4 +1,6 @@
-const House = [
+import { Dict } from '../types/dict.ts';
+
+const House: Dict = [
   {
     english: 'window',
     kanji: '窓',

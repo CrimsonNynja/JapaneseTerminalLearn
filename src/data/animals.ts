@@ -1,4 +1,6 @@
-const Animals = [
+import { Dict } from '../types/dict.ts';
+
+const Animals: Dict = [
   {
     english: 'dog',
     kanji: '犬',

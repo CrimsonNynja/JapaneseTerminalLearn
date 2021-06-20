@@ -1,4 +1,6 @@
-const Family = [
+import { Dict } from '../types/dict.ts';
+
+const Family: Dict = [
   {
     english: ['younger sister', 'little sister'],
     kanji: '妹',

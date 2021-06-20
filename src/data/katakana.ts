@@ -1,4 +1,6 @@
-const Katakana = [
+import { Dict } from '../types/dict.ts';
+
+const Katakana: Dict = [
   { english: 'a', kanamoji: 'ア' },
   { english: 'e', kanamoji: 'エ' },
   { english: 'i', kanamoji: 'イ' },

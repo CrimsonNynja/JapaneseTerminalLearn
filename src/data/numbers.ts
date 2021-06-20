@@ -1,4 +1,6 @@
-const Numbers = [
+import { Dict } from '../types/dict.ts';
+
+const Numbers: Dict = [
   {
     english: ['one', '1'],
     kanji: '一',

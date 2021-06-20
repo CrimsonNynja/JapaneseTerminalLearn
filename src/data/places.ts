@@ -1,4 +1,6 @@
-const Places = [
+import { Dict } from '../types/dict.ts';
+
+const Places: Dict = [
   {
     english: ['convenience store', 'milk bar'],
     kanamoji: 'コンビニ',

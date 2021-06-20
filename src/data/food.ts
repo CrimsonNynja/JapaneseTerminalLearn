@@ -1,4 +1,6 @@
-const Food = [
+import { Dict } from '../types/dict.ts';
+
+const Food: Dict = [
   {
     english: 'meat',
     kanji: '肉',

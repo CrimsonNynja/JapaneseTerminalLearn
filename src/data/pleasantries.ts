@@ -1,4 +1,6 @@
-const Pleasantries = [
+import { Dict } from '../types/dict.ts';
+
+const Pleasantries: Dict = [
   {
     english: ['hello', 'hi'],
     kanamoji: 'こにちは',

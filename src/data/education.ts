@@ -1,4 +1,6 @@
-const Education = [
+import { Dict } from '../types/dict.ts';
+
+const Education: Dict = [
   {
     english: 'teacher',
     kanji: '先生',
