@@ -1,18 +1,7 @@
 import { getLine, write } from './utils/inputOutput.ts';
-import { combineDicts, pullItemAndRemoveFromDict } from './utils/dictUtils.ts';
+import { pullItemAndRemoveFromDict } from './utils/dictUtils.ts';
 import { dictEntryToQuestionAnswer } from './utils/transformers.ts';
-import Hiragana from './data/hiragana.ts';
-import Katakana from './data/katakana.ts';
-import Locations from './data/locations.ts';
-import Numbers from './data/numbers.ts';
-import Food from './data/food.ts';
-import Family from './data/family.ts';
-import Animals from './data/animals.ts';
-import Pleasantries from './data/pleasantries.ts';
-import House from './data/house.ts';
-import Education from './data/education.ts';
-import Time from './data/time.ts';
-import Places from './data/places.ts';
+import { createDictionary } from './dictionary.ts';
 
 const isAnswerCorrect = (answer: string | string[], given: string) => {
   if(Array.isArray(answer)) {
@@ -30,20 +19,20 @@ const isAnswerCorrect = (answer: string | string[], given: string) => {
 write('enter question count: ');
 const questionCount = await getLine();
 
-const dict = combineDicts([
-  ...Hiragana,
-  ...Katakana,
-  ...Locations,
-  ...Numbers,
-  ...Food,
-  ...Family,
-  ...Animals,
-  ...Pleasantries,
-  ...House,
-  ...Education,
-  ...Time,
-  ...Places,
-], [...Education]);
+const dict = createDictionary([
+  'Food',
+  'House',
+  'Hiragana',
+  'Katakana',
+  'Locations',
+  'Numbers',
+  'Family',
+  'Animals',
+  'Pleasantries',
+  'Education',
+  'Time',
+  'Places'
+]);
 
 let correctCount = 0;
 for (let i = 0; i < Number(questionCount); i++) {
