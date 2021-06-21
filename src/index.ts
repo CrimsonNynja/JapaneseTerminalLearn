@@ -16,9 +16,6 @@ const isAnswerCorrect = (answer: string | string[], given: string) => {
   return false;
 };
 
-write('enter question count: ');
-const questionCount = await getLine();
-
 const dict = createDictionary([
   'Food',
   'House',
@@ -34,16 +31,17 @@ const dict = createDictionary([
   'Places'
 ]);
 
-let correctCount = 0;
-for (let i = 0; i < Number(questionCount); i++) {
+let answeredCorrectly = false;
+while (answeredCorrectly === false) {
   const { question, answer } = dictEntryToQuestionAnswer(pullItemAndRemoveFromDict(dict));
   write('enter translation ' + question + ': ');
   const line = await getLine();
   if (isAnswerCorrect(answer, line)) {
     console.log('✅');
-    correctCount += 1;
+    answeredCorrectly = true;
+  } else if (line === 'zz') {
+    answeredCorrectly = true;
   } else {
     console.log('❌ correct answer is ' + JSON.stringify(answer));
   }
 }
-console.log('questions answered correctly ' + correctCount + '/' + questionCount);
