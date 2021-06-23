@@ -1,9 +1,9 @@
 export interface DictWord {
-  english: String | String[],
-  kanji?: String,
-  kanamoji: String | String[],
-  jlp?: number,
-  modifiers?: DictWord[],
-};
+  english: string | string[];
+  kanji?: string;
+  kanamoji: string | string[];
+  jlp?: number;
+  modifiers?: DictWord[];
+}
 
 export type Dict = DictWord[];

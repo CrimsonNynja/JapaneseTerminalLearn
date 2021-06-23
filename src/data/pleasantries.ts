@@ -1,28 +1,28 @@
-import { Dict } from '../types/dict.ts';
+import { Dict } from "../types/dict.ts";
 
 const Pleasantries: Dict = [
   {
-    english: ['hello', 'hi'],
-    kanamoji: 'こにちは',
+    english: ["hello", "hi"],
+    kanamoji: "こにちは",
   },
   {
-    english: 'welcome',
-    kanamoji: 'ようこそ',
+    english: "welcome",
+    kanamoji: "ようこそ",
   },
   {
-    english: ['sorry', 'excuse me', 'pardon me'],
-    kanamoji: ['すいません', 'すみません'],
+    english: ["sorry", "excuse me", "pardon me"],
+    kanamoji: ["すいません", "すみません"],
     jlp: 3,
   },
   {
-    english: ['see you', 'bye'],
-    kanamoji: 'じゃあね',
+    english: ["see you", "bye"],
+    kanamoji: "じゃあね",
   },
   {
-    english: ['thank you', 'thanks'],
-    kanamoji: 'どうも',
+    english: ["thank you", "thanks"],
+    kanamoji: "どうも",
     jlp: 5,
-  }
+  },
 ];
 
 export default Pleasantries;
