@@ -7,5 +7,6 @@ export const dictEntryToQuestionAnswer = (entry: any) => {
   return {
     question,
     answer: entry.english,
+    kanamoji: entry.kanamoji,
   };
 };

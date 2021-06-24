@@ -4,6 +4,7 @@ import { dictEntryToQuestionAnswer } from "./utils/transformers.ts";
 import { createDictionary } from "./dictionary.ts";
 import { ReportCard } from "./types/report.ts";
 import { amendReportCard, getLastReport, writeReport } from "./utils/report.ts";
+import { createTest } from "./utils/sensei.ts";
 
 const isAnswerCorrect = (answer: string | string[], given: string) => {
   if (Array.isArray(answer)) {
@@ -34,6 +35,8 @@ const dict = createDictionary([
 ]);
 
 let reportCard: ReportCard = await getLastReport();
+const test = createTest(dict, reportCard);
+
 const dateObj = new Date();
 const day = ("0" + dateObj.getDate()).slice(-2);
 const month = ("0" + (dateObj.getMonth() + 1)).slice(-2);
@@ -42,8 +45,8 @@ const date = year + "-" + month + "-" + day;
 
 let answeredCorrectly = false;
 while (answeredCorrectly === false) {
-  const { question, answer } = dictEntryToQuestionAnswer(
-    pullItemAndRemoveFromDict(dict),
+  const { question, answer, kanamoji } = dictEntryToQuestionAnswer(
+    pullItemAndRemoveFromDict(test),
   );
   write("enter translation " + question + ": ");
   const line = await getLine();
@@ -52,7 +55,7 @@ while (answeredCorrectly === false) {
     const report = {
       question: {
         english: answer,
-        kanamoji: question,
+        kanamoji: kanamoji,
       },
       marks: 1,
       markedDate: date,
@@ -66,7 +69,7 @@ while (answeredCorrectly === false) {
     const report = {
       question: {
         english: answer,
-        kanamoji: question,
+        kanamoji: kanamoji,
       },
       marks: -1,
       markedDate: date,
