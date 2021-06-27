@@ -5,6 +5,11 @@ import { createDictionary } from "./dictionary.ts";
 import { ReportCard } from "./types/report.ts";
 import { amendReportCard, getLastReport, writeReport } from "./utils/report.ts";
 import { createTest } from "./utils/sensei.ts";
+import { shouldRunOnCommand } from "./utils/terminalCommands.ts";
+
+if (shouldRunOnCommand() === false) {
+  Deno.exit(0);
+}
 
 const isAnswerCorrect = (answer: string | string[], given: string) => {
   if (Array.isArray(answer)) {

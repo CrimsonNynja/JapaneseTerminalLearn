@@ -18,23 +18,8 @@ run this is in `~/.zshrc` and follows the following
 
 ```zsh
 preexec () {
-  if [[ $1 == 'pwd' ]]; then
-    deno run <path>/JapaneseTerminalLearn/src/index.ts
-  fi
+    deno run <path>/JapaneseTerminalLearn/src/index.ts $1
 }
 ```
 
-will run the program before `pwd` is run
-
-terminology:
-
-a book is the set of all questions that can be asked a book is created from
-chapters, which represent question categories, i.e. places, food
-
-the sensei decides which questions to ask from the book, based on your previous
-answers (correct/incorrect)
-
-your previous answers are recorded in the report
-
-the questions the sensei can ask, are determined by taking the dictionary, and
-prunning it with the report, then picking the question at random
+will run the program before the commands in `terminalCommand.ts` is run
