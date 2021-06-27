@@ -1,4 +1,4 @@
-const args = Deno.args[0].split(' ');
+const args = Deno.args[0]?.split(' ');
 
 const commands = [
   'pwd',
@@ -7,6 +7,10 @@ const commands = [
 ];
 
 export const shouldRunOnCommand = () => {
+  if (args === undefined) {
+    return true;
+  }
+
   let ret = false;
   commands.forEach((command) => {
     args.forEach((arg) => {
