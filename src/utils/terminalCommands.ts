@@ -5,7 +5,6 @@ const commands = [
   'brew',
   'code'
 ];
-
 export const shouldRunOnCommand = () => {
   if (args === undefined) {
     return true;

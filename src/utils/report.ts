@@ -1,11 +1,15 @@
+import { normalize } from "https://deno.land/std@0.99.0/path/mod.ts";
 import { Report, ReportCard } from "../types/report.ts";
 
+const scriptPath = new URL('.', import.meta.url).pathname;
+const reportFilePath: string = normalize(`${scriptPath}../../reportCard.json`);
+
 export const writeReport = async (reportCard: ReportCard) => {
-  await Deno.writeTextFile("./reportCard.json", JSON.stringify(reportCard));
+  await Deno.writeTextFile(reportFilePath, JSON.stringify(reportCard));
 };
 
 export const getLastReport = async () => {
-  const reportCard = await Deno.readTextFile("./reportCard.json");
+  const reportCard = await Deno.readTextFile(reportFilePath);
   return JSON.parse(reportCard);
 };
 
