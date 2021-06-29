@@ -1,12 +1,29 @@
+import { reviewReport } from "./report.ts";
+
 const args = Deno.args[0]?.split(' ');
+
+const reviewCommand = 'review';
 
 const commands = [
   'pwd',
   'brew',
-  'code'
+  'code',
+  'jtl'
 ];
+
+export const reviewIfRequested = (report: any) => {
+  let reviewed = false;
+  args.forEach((arg) => {
+    if (arg === reviewCommand) {
+      reviewReport(report);
+      reviewed = true;
+    }
+  });
+  return reviewed;
+};
+
 export const shouldRunOnCommand = () => {
-  if (args === undefined) {
+  if (args === undefined || args[0] === reviewCommand) {
     return true;
   }
 

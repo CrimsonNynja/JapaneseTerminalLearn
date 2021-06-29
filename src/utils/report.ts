@@ -1,4 +1,5 @@
 import { normalize } from "https://deno.land/std@0.99.0/path/mod.ts";
+import { write } from "./inputOutput.ts";
 import { Report, ReportCard } from "../types/report.ts";
 
 const scriptPath = new URL('.', import.meta.url).pathname;
@@ -34,4 +35,10 @@ export const amendReportCard = (reportCard: ReportCard, report: Report) => {
     reportCard.push(report);
   }
   return reportCard;
+};
+
+export const reviewReport = (reportCard: ReportCard) => {
+  reportCard.forEach((report) => {
+    write(`${JSON.stringify(report.question.kanamoji)}: ${report.marks}\n`);
+  });
 };

@@ -7,7 +7,7 @@ export const getLine = async () => {
   return line;
 };
 
-export const write = (message: string) => {
+export const write = async (message: string) => {
   const text: Uint8Array = new TextEncoder().encode(message);
-  Deno.writeAll(Deno.stdout, text);
+  await Deno.writeAll(Deno.stdout, text);
 };
