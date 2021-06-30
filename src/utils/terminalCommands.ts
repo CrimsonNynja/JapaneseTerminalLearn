@@ -1,4 +1,5 @@
 import { reviewReport } from "./report.ts";
+import { ReportCard } from "../types/report.ts"
 
 const args = Deno.args[0]?.split(' ');
 
@@ -11,7 +12,7 @@ const commands = [
   'jtl'
 ];
 
-export const reviewIfRequested = (report: any) => {
+export const reviewIfRequested = (report: ReportCard) => {
   let reviewed = false;
   args.forEach((arg) => {
     if (arg === reviewCommand) {
