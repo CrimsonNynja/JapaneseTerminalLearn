@@ -5,7 +5,7 @@ const Time: Dict = [
     english: ["now", "right now", "just now"],
     kanji: "今",
     kanamoji: "いま",
-    jlp: 5.,
+    jlp: 5,
   },
   {
     english: ["hour", "o'clock", "oclock"],
@@ -29,6 +29,20 @@ const Time: Dict = [
     kanji: "午後",
     kanamoji: "ごご",
     jlp: 5,
+  },
+  {
+    english: ["day", "sun"],
+    kanji: "日",
+    kanamoji: "ひ",
+    jlp: 5,
+    modifiers: [
+      {
+        english: "today",
+        kanji: "今日",
+        kanamoji: "きょう",
+        jlp: 5,
+      },
+    ]
   },
 ];
 
