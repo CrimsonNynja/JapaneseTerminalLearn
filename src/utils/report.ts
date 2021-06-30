@@ -9,13 +9,22 @@ export const writeReport = async (reportCard: ReportCard) => {
   await Deno.writeTextFile(reportFilePath, JSON.stringify(reportCard));
 };
 
-export const getLastReport = async () => {
-  const reportCard: ReportCard = JSON.parse(await Deno.readTextFile(reportFilePath));
-  if (reportCard.version !== VERSION) {
-    console.log('report card is out of date and needs to be updated!');
-    reportCard.version = VERSION;
+export const getLastReport = async (): Promise<ReportCard> => {
+  const file = await Deno.readTextFile(reportFilePath).catch(() => {
+    createNewReportCardFile();
+  })
+  if (file) {
+    const reportCard: ReportCard = JSON.parse(file);
+    if (reportCard.version !== VERSION) {
+      console.log('report card is out of date and needs to be updated!');
+      reportCard.version = VERSION;
+    }
+    return reportCard;
   }
-  return reportCard;
+  return {
+    version: VERSION,
+    reports: [],
+  }
 };
 
 export const amendReportCard = (reportCard: ReportCard, report: Report) => {
@@ -46,3 +55,10 @@ export const reviewReport = (reportCard: ReportCard) => {
     write(`${JSON.stringify(report.question.kanamoji)}: ${report.marks}\n`);
   });
 };
+
+export const createNewReportCardFile = async () => {
+  await Deno.writeTextFile(reportFilePath, JSON.stringify({
+    version: VERSION,
+    reports: [],
+  }));
+}

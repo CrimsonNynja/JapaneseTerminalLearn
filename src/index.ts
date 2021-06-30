@@ -6,10 +6,13 @@ import { ReportCard } from "./types/report.ts";
 import { amendReportCard, getLastReport, writeReport } from "./utils/report.ts";
 import { createTest } from "./utils/sensei.ts";
 import { shouldRunOnCommand, reviewIfRequested } from "./utils/terminalCommands.ts";
+import { loadSettings } from "./utils/settings.ts";
 
 if (shouldRunOnCommand() === false) {
   Deno.exit(0);
 }
+
+const settings = await loadSettings();
 
 const isAnswerCorrect = (answer: string | string[], given: string) => {
   if (Array.isArray(answer)) {
@@ -40,7 +43,7 @@ const dict = createDictionary([
 ]);
 
 let reportCard: ReportCard = await getLastReport();
-reviewIfRequested(reportCard)
+reviewIfRequested(reportCard);
 const test = createTest(dict, reportCard);
 
 const dateObj = new Date();
@@ -49,39 +52,38 @@ const month = ("0" + (dateObj.getMonth() + 1)).slice(-2);
 const year = dateObj.getFullYear();
 const date = year + "-" + month + "-" + day;
 
-let answeredCorrectly = false;
-while (answeredCorrectly === false) {
-  const { question, answer, kanamoji } = dictEntryToQuestionAnswer(
-    pullItemAndRemoveFromDict(test),
-  );
-  write("enter translation " + question + ": ");
-  const line = await getLine();
-  if (isAnswerCorrect(answer, line)) {
-    console.log("✅");
-    const report = {
-      question: {
-        english: answer,
-        kanamoji: kanamoji,
-      },
-      marks: 1,
-      markedDate: date,
-    };
-    reportCard = amendReportCard(reportCard, report);
-    answeredCorrectly = true;
-  } else if (line === "zz") {
-    answeredCorrectly = true;
-  } else {
-    console.log("❌ correct answer is " + JSON.stringify(answer));
-    const report = {
-      question: {
-        english: answer,
-        kanamoji: kanamoji,
-      },
-      marks: -1,
-      markedDate: date,
-    };
-    reportCard = amendReportCard(reportCard, report);
+for (let i = 0; i < settings.questionCount; i++) {
+  let answeredCorrectly = false;
+  while (answeredCorrectly === false) {
+    const { question, answer, kanamoji } = dictEntryToQuestionAnswer(pullItemAndRemoveFromDict(test));
+    write("enter translation " + question + ": ");
+    const line = await getLine();
+    if (isAnswerCorrect(answer, line)) {
+      console.log("✅");
+      const report = {
+        question: {
+          english: answer,
+          kanamoji: kanamoji,
+        },
+        marks: 1,
+        markedDate: date,
+      };
+      reportCard = amendReportCard(reportCard, report);
+      answeredCorrectly = true;
+    } else if (line === "zz") {
+      answeredCorrectly = true;
+    } else {
+      console.log("❌ correct answer is " + JSON.stringify(answer));
+      const report = {
+        question: {
+          english: answer,
+          kanamoji: kanamoji,
+        },
+        marks: -1,
+        markedDate: date,
+      };
+      reportCard = amendReportCard(reportCard, report);
+    }
   }
 }
-
 await writeReport(reportCard);

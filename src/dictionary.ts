@@ -30,7 +30,7 @@ const chapters: any = {
 
 export const createDictionary = (chaptersToAdd: string[]): Dict => {
   let dictionary: Dict = [];
-  chaptersToAdd.forEach((chapter: any) => {
+  chaptersToAdd.forEach((chapter: string) => {
     dictionary = combineDicts(dictionary, chapters[chapter]);
   });
   return dictionary;
