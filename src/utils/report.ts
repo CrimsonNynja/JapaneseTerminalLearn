@@ -1,6 +1,6 @@
 import { normalize } from "https://deno.land/std@0.99.0/path/mod.ts";
 import { write } from "./inputOutput.ts";
-import { Report, ReportCard } from "../types/report.ts";
+import { Report, ReportCard, VERSION } from "../types/report.ts";
 
 const scriptPath = new URL('.', import.meta.url).pathname;
 const reportFilePath: string = normalize(`${scriptPath}../../reportCard.json`);
@@ -10,20 +10,24 @@ export const writeReport = async (reportCard: ReportCard) => {
 };
 
 export const getLastReport = async () => {
-  const reportCard = await Deno.readTextFile(reportFilePath);
-  return JSON.parse(reportCard);
+  const reportCard: ReportCard = JSON.parse(await Deno.readTextFile(reportFilePath));
+  if (reportCard.version !== VERSION) {
+    console.log('report card is out of date and needs to be updated!');
+    reportCard.version = VERSION;
+  }
+  return reportCard;
 };
 
 export const amendReportCard = (reportCard: ReportCard, report: Report) => {
   let amended = false;
-  reportCard.forEach((item: Report, index: number) => {
+  reportCard.reports.forEach((item: Report, index: number) => {
     if (
       item.question.english === report.question.english &&
       item.question.kanamoji === report.question.kanamoji
     ) {
-      reportCard[index].marks += report.marks;
-      if (reportCard[index].marks < 0) {
-        reportCard[index].marks = 0;
+      reportCard.reports[index].marks += report.marks;
+      if (reportCard.reports[index].marks < 0) {
+        reportCard.reports[index].marks = 0;
       }
       amended = true;
     }
@@ -32,13 +36,13 @@ export const amendReportCard = (reportCard: ReportCard, report: Report) => {
     if (report.marks < 0) {
       report.marks = 0;
     }
-    reportCard.push(report);
+    reportCard.reports.push(report);
   }
   return reportCard;
 };
 
 export const reviewReport = (reportCard: ReportCard) => {
-  reportCard.forEach((report) => {
+  reportCard.reports.forEach((report) => {
     write(`${JSON.stringify(report.question.kanamoji)}: ${report.marks}\n`);
   });
 };

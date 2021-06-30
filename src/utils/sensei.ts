@@ -5,7 +5,7 @@ const MARKS_NEEDED_FOR_PASS = 5;
 
 export const createTest = (dictionary: Dict, reportCard: ReportCard) => {
   dictionary.forEach((word: DictWord, index: number) => {
-    reportCard.forEach((report) => {
+    reportCard.reports.forEach((report) => {
       if (
         word.english === report.question.english &&
         word.kanamoji === report.question.kanamoji

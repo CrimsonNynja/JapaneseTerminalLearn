@@ -7,4 +7,9 @@ export interface Report {
   markedDate: string;
 }
 
-export type ReportCard = Report[];
+export const VERSION = 1;
+
+export type ReportCard = {
+  version: number;
+  reports: Report[];
+}
