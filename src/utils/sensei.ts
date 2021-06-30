@@ -1,7 +1,7 @@
 import { ReportCard } from "../types/report.ts";
 import { Dict, DictWord } from "../types/dict.ts";
 
-const MARKS_NEEDED_FOR_PASS = 5;
+export const MARKS_NEEDED_FOR_PASS = 5;
 
 export const createTest = (dictionary: Dict, reportCard: ReportCard) => {
   dictionary.forEach((word: DictWord, index: number) => {

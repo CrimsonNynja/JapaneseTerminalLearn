@@ -32,7 +32,7 @@ for (let i = 0; i < settings.questionCount; i++) {
     write("enter translation " + question + ": ");
     const line = await getLine();
     if (isAnswerCorrect(answer, line)) {
-      write("✅\n");
+      write("✅ correct!\n");
       const report = {
         question: {
           english: answer,
