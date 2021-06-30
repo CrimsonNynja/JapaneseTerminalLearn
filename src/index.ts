@@ -2,7 +2,6 @@ import { getLine, write } from "./utils/inputOutput.ts";
 import { pullItemAndRemoveFromDict } from "./utils/dictUtils.ts";
 import { dictEntryToQuestionAnswer } from "./utils/transformers.ts";
 import { createDictionary } from "./dictionary.ts";
-import { ReportCard } from "./types/report.ts";
 import { amendReportCard, getLastReport, writeReport } from "./utils/report.ts";
 import { createTest, isAnswerCorrect } from "./utils/sensei.ts";
 import { shouldRunOnCommand, reviewIfRequested } from "./utils/terminalCommands.ts";
@@ -13,6 +12,7 @@ if (shouldRunOnCommand() === false) {
 }
 
 const settings = await loadSettings();
+let reportCard = await getLastReport();
 
 const dict = createDictionary([
   "Food",
@@ -29,7 +29,6 @@ const dict = createDictionary([
   "Places",
 ]);
 
-let reportCard: ReportCard = await getLastReport();
 reviewIfRequested(reportCard);
 const test = createTest(dict, reportCard);
 
@@ -46,7 +45,7 @@ for (let i = 0; i < settings.questionCount; i++) {
     write("enter translation " + question + ": ");
     const line = await getLine();
     if (isAnswerCorrect(answer, line)) {
-      console.log("✅");
+      write("✅");
       const report = {
         question: {
           english: answer,
@@ -60,7 +59,7 @@ for (let i = 0; i < settings.questionCount; i++) {
     } else if (line === "zz") {
       answeredCorrectly = true;
     } else {
-      console.log("❌ correct answer is " + JSON.stringify(answer));
+      write(`❌ correct answer is ${JSON.stringify(answer)}\n`);
       const report = {
         question: {
           english: answer,
@@ -73,4 +72,5 @@ for (let i = 0; i < settings.questionCount; i++) {
     }
   }
 }
+
 await writeReport(reportCard);
