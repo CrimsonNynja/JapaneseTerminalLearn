@@ -14,20 +14,7 @@ if (shouldRunOnCommand() === false) {
 const settings = await loadSettings();
 let reportCard = await getLastReport();
 
-const dict = createDictionary([
-  "Food",
-  "House",
-  "Hiragana",
-  "Katakana",
-  "Locations",
-  "Numbers",
-  "Family",
-  "Animals",
-  "Pleasantries",
-  "Education",
-  "Time",
-  "Places",
-]);
+const dict = createDictionary(settings.includedChapters);
 
 reviewIfRequested(reportCard);
 const test = createTest(dict, reportCard);
