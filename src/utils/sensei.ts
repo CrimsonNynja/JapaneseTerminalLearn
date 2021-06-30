@@ -21,6 +21,19 @@ export const createTest = (dictionary: Dict, reportCard: ReportCard) => {
   return dictionary;
 };
 
+export const isAnswerCorrect = (answer: string | string[], given: string) => {
+  if (Array.isArray(answer)) {
+    if (answer.includes(given)) {
+      return true;
+    }
+  } else {
+    if (answer === given) {
+      return true;
+    }
+  }
+  return false;
+};
+
 // export const askQuestion = (test: Dict): DictWord => {
 
 // };

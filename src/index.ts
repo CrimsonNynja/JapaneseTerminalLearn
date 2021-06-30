@@ -4,7 +4,7 @@ import { dictEntryToQuestionAnswer } from "./utils/transformers.ts";
 import { createDictionary } from "./dictionary.ts";
 import { ReportCard } from "./types/report.ts";
 import { amendReportCard, getLastReport, writeReport } from "./utils/report.ts";
-import { createTest } from "./utils/sensei.ts";
+import { createTest, isAnswerCorrect } from "./utils/sensei.ts";
 import { shouldRunOnCommand, reviewIfRequested } from "./utils/terminalCommands.ts";
 import { loadSettings } from "./utils/settings.ts";
 
@@ -13,19 +13,6 @@ if (shouldRunOnCommand() === false) {
 }
 
 const settings = await loadSettings();
-
-const isAnswerCorrect = (answer: string | string[], given: string) => {
-  if (Array.isArray(answer)) {
-    if (answer.includes(given)) {
-      return true;
-    }
-  } else {
-    if (answer === given) {
-      return true;
-    }
-  }
-  return false;
-};
 
 const dict = createDictionary([
   "Food",
