@@ -1,5 +1,5 @@
 export type Settings = {
   questionCount: number;
-  includedChapters?: string|string[];
+  includedChapters: string[];
   jlp?: number;
 }

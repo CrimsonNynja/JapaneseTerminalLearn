@@ -12,7 +12,8 @@ export const loadSettings = async (): Promise<Settings> => {
     return JSON.parse(file);
   }
   return {
-    questionCount: 1
+    questionCount: 1,
+    includedChapters: ["Hiragana", "Katakana"],
   };
 };
 
