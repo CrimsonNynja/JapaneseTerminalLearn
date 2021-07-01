@@ -1,4 +1,5 @@
 import { Dict } from "../types/dict.ts";
+import { CYAN, NO_COLOR } from "../utils/constants.ts";
 
 const Time: Dict = [
   {
@@ -6,11 +7,19 @@ const Time: Dict = [
     kanji: "今",
     kanamoji: "いま",
     jlp: 5,
+    example: {
+      japanese: `${CYAN}今${NO_COLOR}は八時です`,
+      english: ["its 8 oclock now", "it's 8 o'clock now", "right now its 8 oclock", "its eight oclock now"],
+    }
   },
   {
     english: ["hour", "o'clock", "oclock"],
     kanji: "時",
     kanamoji: "じ",
+    example: {
+      japanese: `何${CYAN}時${NO_COLOR}ですか`,
+      english: ["what time is it?", "what time is it", "whats the time", "what's the time"],
+    }
   },
   {
     english: ["minute", "minutes"],
