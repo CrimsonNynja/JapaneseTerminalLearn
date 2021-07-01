@@ -4,7 +4,7 @@ import { dictEntryToQuestionAnswer } from "./utils/transformers.ts";
 import { createDictionary } from "./dictionary.ts";
 import { amendReportCard, getLastReport, writeReport, reviewReport } from "./utils/report.ts";
 import { createTest, isAnswerCorrect } from "./utils/sensei.ts";
-import { loadSettings } from "./utils/settings.ts";
+import { loadSettings } from "./settings/settings.ts";
 import { Command, getCommandType, parseCommandLineArgs } from "./interpreter/interpreter.ts";
 
 const settings = await loadSettings();

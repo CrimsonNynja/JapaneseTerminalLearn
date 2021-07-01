@@ -1,4 +1,4 @@
-import { Settings } from "../types/settings.ts";
+import { Settings } from "../settings/settings.ts";
 
 /**
  * enum for the command type

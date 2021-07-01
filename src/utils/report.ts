@@ -61,7 +61,7 @@ export const reviewReport = async (reportCard: ReportCard) => {
     } else {
       await write(`${JSON.stringify(report.question.kanamoji)}: ${report.marks}\n`);
     }
-  };
+  }
 };
 
 export const createNewReportCardFile = async () => {
