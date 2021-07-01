@@ -2,21 +2,25 @@ import { getLine, write } from "./utils/inputOutput.ts";
 import { pullItemAndRemoveFromDict } from "./utils/dictUtils.ts";
 import { dictEntryToQuestionAnswer } from "./utils/transformers.ts";
 import { createDictionary } from "./dictionary.ts";
-import { amendReportCard, getLastReport, writeReport } from "./utils/report.ts";
+import { amendReportCard, getLastReport, writeReport, reviewReport } from "./utils/report.ts";
 import { createTest, isAnswerCorrect } from "./utils/sensei.ts";
-import { shouldRunOnCommand, reviewIfRequested } from "./utils/terminalCommands.ts";
 import { loadSettings } from "./utils/settings.ts";
+import { Command, getCommandType, parseCommandLineArgs } from "./interpreter/interpreter.ts";
 
 const settings = await loadSettings();
 let reportCard = await getLastReport();
 
-if (shouldRunOnCommand(settings.activationCommands) === false) {
+const commandType = getCommandType(parseCommandLineArgs(), settings);
+
+if (commandType === Command.REVIEW) {
+  await reviewReport(reportCard);
+  Deno.exit(0);
+}
+if (commandType === Command.QUIT) {
   Deno.exit(0);
 }
 
 const dict = createDictionary(settings.includedChapters);
-
-reviewIfRequested(reportCard);
 const test = createTest(dict, reportCard);
 
 const dateObj = new Date();

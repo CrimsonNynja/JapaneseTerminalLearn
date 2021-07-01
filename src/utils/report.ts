@@ -2,7 +2,7 @@ import { normalize } from "https://deno.land/std@0.99.0/path/mod.ts";
 import { write } from "./inputOutput.ts";
 import { Report, ReportCard, VERSION } from "../types/report.ts";
 import { MARKS_NEEDED_FOR_PASS } from "./sensei.ts";
-import { GREEN, RED, NO_COLOR } from "./constants.ts";
+import { GREEN, RED, NO_BG_COLOR } from "./constants.ts";
 
 const scriptPath = new URL('.', import.meta.url).pathname;
 const reportFilePath: string = normalize(`${scriptPath}../../reportCard.json`);
@@ -52,16 +52,16 @@ export const amendReportCard = (reportCard: ReportCard, report: Report) => {
   return reportCard;
 };
 
-export const reviewReport = (reportCard: ReportCard) => {
-  reportCard.reports.forEach((report) => {
+export const reviewReport = async (reportCard: ReportCard) => {
+  for (const report of reportCard.reports) {
     if (report.marks >= MARKS_NEEDED_FOR_PASS) {
-      write(`${GREEN}${JSON.stringify(report.question.kanamoji)}: ${report.marks}${NO_COLOR}\n`);
+      await write(`${GREEN}${JSON.stringify(report.question.kanamoji)}: ${report.marks}${NO_BG_COLOR}\n`);
     } else if (report.marks === 0) {
-      write(`${RED}${JSON.stringify(report.question.kanamoji)}: ${report.marks}${NO_COLOR}\n`);
+      await write(`${RED}${JSON.stringify(report.question.kanamoji)}: ${report.marks}${NO_BG_COLOR}\n`);
     } else {
-      write(`${JSON.stringify(report.question.kanamoji)}: ${report.marks}\n`);
+      await write(`${JSON.stringify(report.question.kanamoji)}: ${report.marks}\n`);
     }
-  });
+  };
 };
 
 export const createNewReportCardFile = async () => {
