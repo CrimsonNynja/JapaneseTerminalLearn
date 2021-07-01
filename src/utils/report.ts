@@ -2,6 +2,7 @@ import { normalize } from "https://deno.land/std@0.99.0/path/mod.ts";
 import { write } from "./inputOutput.ts";
 import { Report, ReportCard, VERSION } from "../types/report.ts";
 import { MARKS_NEEDED_FOR_PASS } from "./sensei.ts";
+import { GREEN, RED, NO_COLOR } from "./constants.ts";
 
 const scriptPath = new URL('.', import.meta.url).pathname;
 const reportFilePath: string = normalize(`${scriptPath}../../reportCard.json`);
@@ -54,9 +55,9 @@ export const amendReportCard = (reportCard: ReportCard, report: Report) => {
 export const reviewReport = (reportCard: ReportCard) => {
   reportCard.reports.forEach((report) => {
     if (report.marks >= MARKS_NEEDED_FOR_PASS) {
-      write(`\x1b[42m${JSON.stringify(report.question.kanamoji)}: ${report.marks}\x1b[0m\n`);
+      write(`${GREEN}${JSON.stringify(report.question.kanamoji)}: ${report.marks}${NO_COLOR}\n`);
     } else if (report.marks === 0) {
-      write(`\x1b[41m${JSON.stringify(report.question.kanamoji)}: ${report.marks}\x1b[0m\n`);
+      write(`${RED}${JSON.stringify(report.question.kanamoji)}: ${report.marks}${NO_COLOR}\n`);
     } else {
       write(`${JSON.stringify(report.question.kanamoji)}: ${report.marks}\n`);
     }

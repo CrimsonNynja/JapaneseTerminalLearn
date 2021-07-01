@@ -1,4 +1,5 @@
 import { Dict } from "../types/dict.ts";
+import { CYAN, NO_COLOR } from '../utils/constants.ts';
 
 const Locations: Dict = [
   {
@@ -27,7 +28,7 @@ const Locations: Dict = [
         kanji: "日本語",
         kanamoji: "にほんご",
         example: {
-          japanese: "日本語が話せいますか",
+          japanese: `${CYAN}日本語${NO_COLOR}が話せいますか`,
           english: ["can you speak japanese?", "can you speak japanese"],
         },
       },
