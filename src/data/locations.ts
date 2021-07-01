@@ -21,6 +21,17 @@ const Locations: Dict = [
     kanji: "日本",
     kanamoji: "にほん",
     jlp: 3,
+    modifiers: [
+      {
+        english: "japanese",
+        kanji: "日本語",
+        kanamoji: "にほんご",
+        example: {
+          japanese: "日本語が話せいますか",
+          english: ["can you speak japanese?", "can you speak japanese"],
+        },
+      },
+    ],
   },
   {
     english: "china",
