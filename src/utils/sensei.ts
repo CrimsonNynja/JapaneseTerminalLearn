@@ -11,7 +11,6 @@ export const createTest = (dictionary: Dict, reportCard: ReportCard) => {
         word.kanamoji === report.question.kanamoji
       ) {
         if (report.marks >= MARKS_NEEDED_FOR_PASS) {
-          console.log("should exclude: ", report.question.english);
           dictionary.splice(index, 1);
         }
       }
