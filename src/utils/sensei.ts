@@ -34,6 +34,11 @@ export const isAnswerCorrect = (answer: string | string[], given: string) => {
   return false;
 };
 
-// export const askQuestion = (test: Dict): DictWord => {
-
-// };
+//in the future, should only ask example sentences if marks > x where x is to be determined
+export const askQuestion = (test: DictWord): string|string[] => {
+  let question = test.kanji ? test.kanji : test.kanamoji;
+  if (test.example) {
+    question = test.example.japanese;
+  }
+  return question;
+};

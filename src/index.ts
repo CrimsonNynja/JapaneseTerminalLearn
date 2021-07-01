@@ -1,9 +1,8 @@
 import { getLine, write } from "./utils/inputOutput.ts";
 import { pullItemAndRemoveFromDict } from "./utils/dictUtils.ts";
-import { dictEntryToQuestionAnswer } from "./utils/transformers.ts";
 import { createDictionary } from "./dictionary.ts";
 import { amendReportCard, getLastReport, writeReport, reviewReport } from "./utils/report.ts";
-import { createTest, isAnswerCorrect } from "./utils/sensei.ts";
+import { createTest, isAnswerCorrect, askQuestion } from "./utils/sensei.ts";
 import { loadSettings } from "./settings/settings.ts";
 import { Command, getCommandType, parseCommandLineArgs } from "./interpreter/interpreter.ts";
 
@@ -32,15 +31,16 @@ const date = year + "-" + month + "-" + day;
 for (let i = 0; i < settings.questionCount; i++) {
   let answeredCorrectly = false;
   while (answeredCorrectly === false) {
-    const { question, answer, kanamoji } = dictEntryToQuestionAnswer(pullItemAndRemoveFromDict(test));
-    write("enter translation " + question + ": ");
+    const word = pullItemAndRemoveFromDict(test);
+    const question = askQuestion(word);
+    write(`enter translation ${question}: `);
     const line = await getLine();
-    if (isAnswerCorrect(answer, line)) {
+    if (isAnswerCorrect(word.english, line)) {
       write("✅ correct!\n");
       const report = {
         question: {
-          english: answer,
-          kanamoji: kanamoji,
+          english: word.english,
+          kanamoji: word.kanamoji,
         },
         marks: 1,
         markedDate: date,
@@ -50,11 +50,11 @@ for (let i = 0; i < settings.questionCount; i++) {
     } else if (line === "zz") {
       answeredCorrectly = true;
     } else {
-      write(`❌ correct answer is ${JSON.stringify(answer)}\n`);
+      write(`❌ correct answer is ${JSON.stringify(word.english)}\n`);
       const report = {
         question: {
-          english: answer,
-          kanamoji: kanamoji,
+          english: word.english,
+          kanamoji: word.kanamoji,
         },
         marks: -1,
         markedDate: date,
