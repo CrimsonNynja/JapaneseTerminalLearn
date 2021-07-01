@@ -53,6 +53,12 @@ const Family: Dict = [
     kanamoji: "こ",
     jlp: 5,
   },
+  {
+    english: ["person", "human"],
+    kanji: "人",
+    kanamoji: "ひと",
+    jlp: 5,
+  },
 ];
 
 export default Family;
