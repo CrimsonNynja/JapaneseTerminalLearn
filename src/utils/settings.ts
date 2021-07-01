@@ -13,6 +13,7 @@ export const loadSettings = async (): Promise<Settings> => {
   }
   return {
     questionCount: 1,
+    activationCommands: [],
     includedChapters: ["Hiragana", "Katakana"],
   };
 };
@@ -24,5 +25,7 @@ export const saveSettings = async (settings: Settings) => {
 export const createNewSettingsFile = async () => {
   await Deno.writeTextFile(settingsFilePath, JSON.stringify({
     questionCount: 1,
+    activationCommands: [],
+    includedChapters: ["Hiragana", "Katakana"],
   }));
 }

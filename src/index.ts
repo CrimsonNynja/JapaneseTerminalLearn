@@ -7,12 +7,12 @@ import { createTest, isAnswerCorrect } from "./utils/sensei.ts";
 import { shouldRunOnCommand, reviewIfRequested } from "./utils/terminalCommands.ts";
 import { loadSettings } from "./utils/settings.ts";
 
-if (shouldRunOnCommand() === false) {
-  Deno.exit(0);
-}
-
 const settings = await loadSettings();
 let reportCard = await getLastReport();
+
+if (shouldRunOnCommand(settings.activationCommands) === false) {
+  Deno.exit(0);
+}
 
 const dict = createDictionary(settings.includedChapters);
 

@@ -5,13 +5,6 @@ const args = Deno.args[0]?.split(' ');
 
 const reviewCommand = 'review';
 
-const commands = [
-  'pwd',
-  'brew',
-  'code',
-  'jtl'
-];
-
 export const reviewIfRequested = (report: ReportCard) => {
   let reviewed = false;
   args.forEach((arg) => {
@@ -23,7 +16,7 @@ export const reviewIfRequested = (report: ReportCard) => {
   return reviewed;
 };
 
-export const shouldRunOnCommand = () => {
+export const shouldRunOnCommand = (commands: string[]) => {
   if (args === undefined || args[0] === reviewCommand) {
     return true;
   }
