@@ -1,4 +1,5 @@
 import { Dict } from "../types/dict.ts";
+import { CYAN, NO_COLOR } from '../utils/constants.ts';
 
 const Food: Dict = [
   {
@@ -40,6 +41,10 @@ const Food: Dict = [
   {
     english: "apple",
     kanamoji: "りんご",
+    example: {
+      japanese: `${CYAN}りんご${NO_COLOR}を食べます`,
+      english: "I eat an apple",
+    },
   },
   {
     english: "strawberry",
@@ -54,6 +59,18 @@ const Food: Dict = [
     english: "fish",
     kanji: "魚",
     kanamoji: "さかな",
+    jlp: 5,
+  },
+  {
+    english: "tea",
+    kanji: "茶",
+    kanamoji: "ちゃ",
+    jlp: 5,
+  },
+  {
+    english: ["rice", "meal"],
+    kanji: "ご飯",
+    kanamoji: "ごはん",
     jlp: 5,
   },
 ];
