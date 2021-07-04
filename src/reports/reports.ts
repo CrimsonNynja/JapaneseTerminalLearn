@@ -2,6 +2,7 @@ import { normalize } from "https://deno.land/std@0.99.0/path/mod.ts";
 import { write } from "../utils/inputOutput.ts";
 import { RED, GREEN, NO_COLOR, SCRIPT_PATH } from "../utils/constants.ts";
 import { MARKS_NEEDED_FOR_PASS } from "../utils/sensei.ts";
+import { updateReport } from "./updates/updates.ts";
 
 export interface Report {
   question: {
@@ -12,7 +13,7 @@ export interface Report {
   markedDate: string;
 }
 
-export const VERSION = 1;
+export const VERSION = 2;
 
 export type ReportCard = {
   version: number;
@@ -46,7 +47,7 @@ export const getLastReport = async (): Promise<ReportCard> => {
     const reportCard: ReportCard = JSON.parse(file);
     if (reportCard.version !== VERSION) {
       write('report card is out of date and needs to be updated!');
-      reportCard.version = VERSION;
+      return updateReport(reportCard);
     }
     return reportCard;
   }
