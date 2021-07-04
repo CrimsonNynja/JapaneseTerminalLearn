@@ -1,7 +1,7 @@
 import { getLine, write } from "./utils/inputOutput.ts";
 import { pullItemAndRemoveFromDict } from "./utils/dictUtils.ts";
 import { createDictionary } from "./dictionary.ts";
-import { amendReportCard, getLastReport, writeReport, reviewReport } from "./utils/report.ts";
+import { amendReportCard, getLastReport, writeReport, reviewReport } from "./reports/reports.ts";
 import { createTest, isAnswerCorrect, askQuestion } from "./utils/sensei.ts";
 import { loadSettings } from "./settings/settings.ts";
 import { Command, getCommandType, parseCommandLineArgs } from "./interpreter/interpreter.ts";

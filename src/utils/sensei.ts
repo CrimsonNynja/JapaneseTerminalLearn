@@ -1,4 +1,4 @@
-import { ReportCard } from "../types/report.ts";
+import { ReportCard } from "../reports/reports.ts";
 import { Dict, DictWord } from "../types/dict.ts";
 
 export const MARKS_NEEDED_FOR_PASS = 5;
