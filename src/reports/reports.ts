@@ -62,8 +62,8 @@ export const getLastReport = async (): Promise<ReportCard> => {
 export const amendReportCard = (reportCard: ReportCard, report: Report): ReportCard => {
   let amended = false;
   reportCard.reports.forEach((item: Report, index: number) => {
-    if (item.question.english === report.question.english &&
-        item.question.kanamoji === report.question.kanamoji) {
+    if (JSON.stringify(item.question.english) === JSON.stringify(report.question.english) &&
+    JSON.stringify(item.question.kanamoji) === JSON.stringify(report.question.kanamoji)) {
       reportCard.reports[index].marks += report.marks;
       amended = true;
       if (reportCard.reports[index].marks < 0) {
