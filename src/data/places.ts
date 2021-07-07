@@ -10,6 +10,12 @@ const Places: Dict = [
     kanamoji: "レストラン",
     jlp: 5,
   },
+  {
+    english: ["company", "corporation", "office"],
+    kanamoji: "かいしゃ",
+    kanji: "会社",
+    jlp: 5,
+  },
 ];
 
 export default Places;

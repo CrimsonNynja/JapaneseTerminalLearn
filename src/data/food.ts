@@ -73,6 +73,12 @@ const Food: Dict = [
     kanamoji: "ごはん",
     jlp: 5,
   },
+  {
+    english: "sweet",
+    kanji: "甘い",
+    kanamoji: "あまい",
+    jlp: 5,
+  },
 ];
 
 export default Food;

@@ -12,6 +12,7 @@ import House from "./data/house.ts";
 import Education from "./data/education.ts";
 import Time from "./data/time.ts";
 import Places from "./data/places.ts";
+import Verbs from "./data/verb.ts";
 
 const chapters: any = {
   Hiragana,
@@ -26,6 +27,7 @@ const chapters: any = {
   Education,
   Time,
   Places,
+  Verbs,
 };
 
 export const createDictionary = (chaptersToAdd: string[]): Dict => {

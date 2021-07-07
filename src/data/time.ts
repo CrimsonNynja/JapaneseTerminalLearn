@@ -53,6 +53,12 @@ const Time: Dict = [
       },
     ]
   },
+  {
+    english: [":30", "half past"],
+    kanji: "半",
+    kanamoji: "はん",
+    jlp: 5,
+  },
 ];
 
 export default Time;

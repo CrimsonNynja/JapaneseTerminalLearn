@@ -39,6 +39,11 @@ const Locations: Dict = [
     kanji: "中国",
     kanamoji: "ちゅうごく",
   },
+  {
+    english: "south korea",
+    kanji: "韓国",
+    kanamoji: "かんこく",
+  },
 ];
 
 export default Locations;
