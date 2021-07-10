@@ -2,7 +2,7 @@ import { getLine, write } from "./utils/inputOutput.ts";
 import { pullItemAndRemoveFromDict } from "./utils/dictUtils.ts";
 import { createDictionary } from "./dictionary.ts";
 import { amendReportCard, getLastReport, writeReport, reviewReport } from "./reports/reports.ts";
-import { createTest, isAnswerCorrect, askQuestion } from "./utils/sensei.ts";
+import { createExam, isAnswerCorrect, askQuestion } from "./sensei/sensei.ts";
 import { loadSettings } from "./settings/settings.ts";
 import { Command, getCommandType, parseCommandLineArgs } from "./interpreter/interpreter.ts";
 
@@ -20,7 +20,7 @@ if (commandType === Command.QUIT) {
 }
 
 const dict = createDictionary(settings.includedChapters);
-const test = createTest(dict, reportCard);
+const test = createExam(dict, reportCard);
 
 const dateObj = new Date();
 const day = ("0" + dateObj.getDate()).slice(-2);
