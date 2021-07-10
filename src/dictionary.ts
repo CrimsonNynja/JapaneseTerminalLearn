@@ -12,7 +12,7 @@ import House from "./data/house.ts";
 import Education from "./data/education.ts";
 import Time from "./data/time.ts";
 import Places from "./data/places.ts";
-import Verbs from "./data/verb.ts";
+import Verbs from "./data/verbs.ts";
 
 const chapters: any = {
   Hiragana,
