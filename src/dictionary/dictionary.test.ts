@@ -1,6 +1,5 @@
 import { assertArrayIncludes, assertEquals } from "https://deno.land/std@0.99.0/testing/asserts.ts";
-import { combineDicts, pullItemAndRemoveFromDict } from "./dictUtils.ts";
-import { Dict, DictWord } from "../types/dict.ts";
+import { Dict, DictWord, combineDicts, pullItemAndRemoveFromDict } from "./dictionary.ts";
 
 Deno.test("combineDicts test", () => {
   Deno.test("run on 1 data point", () => {

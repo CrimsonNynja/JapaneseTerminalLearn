@@ -1,5 +1,5 @@
 import { ReportCard } from "../reports/reports.ts";
-import { Dict, DictWord } from "../types/dict.ts";
+import { Dict, DictWord } from "../dictionary/dictionary.ts";
 
 export const MARKS_NEEDED_FOR_PASS = 5;
 export const MARKS_NEEDED_FOR_EXAMPLES = 3;

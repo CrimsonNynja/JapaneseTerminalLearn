@@ -1,4 +1,4 @@
-import { Dict } from "../types/dict.ts";
+import { Dict } from "../dictionary/dictionary.ts";
 
 const Verbs: Dict = [
   {

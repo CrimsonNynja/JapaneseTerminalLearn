@@ -1,4 +1,4 @@
-import { Dict } from "../types/dict.ts";
+import { Dict } from "../dictionary/dictionary.ts";
 import { CYAN, NO_COLOR } from "../utils/constants.ts";
 
 const Time: Dict = [

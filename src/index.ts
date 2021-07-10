@@ -1,6 +1,5 @@
 import { getLine, write } from "./utils/inputOutput.ts";
-import { pullItemAndRemoveFromDict } from "./utils/dictUtils.ts";
-import { createDictionary } from "./dictionary.ts";
+import { pullItemAndRemoveFromDict, createDictionary } from "./dictionary/dictionary.ts";
 import { amendReportCard, getLastReport, writeReport, reviewReport } from "./reports/reports.ts";
 import { createExam, isAnswerCorrect, askQuestion } from "./sensei/sensei.ts";
 import { loadSettings } from "./settings/settings.ts";
