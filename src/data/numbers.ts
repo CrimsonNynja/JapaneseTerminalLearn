@@ -62,6 +62,12 @@ const Numbers: Dict = [
     jlp: 5,
   },
   {
+    english: ["oen hundred", "100"],
+    kanji: "百",
+    kanamoji: "ひゃく",
+    jlp: 5,
+  },
+  {
     english: ["1000", "thousand", "one thousand"],
     kanji: "千",
     kanamoji: "せん",
