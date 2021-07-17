@@ -53,6 +53,10 @@ const House: Dict = [
     kanamoji: "テーブル",
     jlp: 5,
   },
+  {
+    english: ["television", "t.v.", "t.v", "tv"],
+    kanamoji: "テレビ"
+  }
 ];
 
 export default House;

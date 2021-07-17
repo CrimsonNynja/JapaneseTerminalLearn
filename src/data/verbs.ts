@@ -25,6 +25,18 @@ const Verbs: Dict = [
     kanji: "起きる",
     jlp: 5,
   },
+  {
+    english: ["to sleep", "sleep"],
+    kanamoji: "ねる",
+    kanji: "寝る",
+    jlp: 5,
+  },
+  {
+    english: ["to talk"],
+    kanamoji: "はなせる",
+    kanji: "話せる",
+    jlp: 5,
+  },
 ];
 
 export default Verbs;
