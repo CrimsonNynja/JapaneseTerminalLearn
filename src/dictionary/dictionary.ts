@@ -1,6 +1,7 @@
 import { chapters } from "./chapters.ts";
 
 export interface DictWord {
+  id: string;
   english: string | string[];
   kanji?: string;
   kanamoji: string | string[];

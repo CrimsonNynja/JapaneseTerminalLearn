@@ -3,6 +3,7 @@ import { CYAN, NO_COLOR } from "../utils/constants.ts";
 
 const Time: Dict = [
   {
+    id: '1',
     english: ["now", "right now", "just now"],
     kanji: "今",
     kanamoji: "いま",
@@ -13,6 +14,7 @@ const Time: Dict = [
     }
   },
   {
+    id: '2',
     english: ["hour", "o'clock", "oclock"],
     kanji: "時",
     kanamoji: "じ",
@@ -22,30 +24,35 @@ const Time: Dict = [
     }
   },
   {
+    id: '3',
     english: ["minute", "minutes"],
     kanji: "分",
     kanamoji: "ふん",
     jlp: 3,
   },
   {
+    id: '4',
     english: ["am", "AM", "A.M.", "morning"],
     kanji: "午前",
     kanamoji: "ごぜん",
     jlp: 5,
   },
   {
+    id: '5',
     english: ["pm", "PM", "P.M.", "afternoon"],
     kanji: "午後",
     kanamoji: "ごご",
     jlp: 5,
   },
   {
+    id: '6',
     english: ["day", "sun"],
     kanji: "日",
     kanamoji: "ひ",
     jlp: 5,
     modifiers: [
       {
+        id: '6-1',
         english: "today",
         kanji: "今日",
         kanamoji: "きょう",
@@ -54,6 +61,7 @@ const Time: Dict = [
     ]
   },
   {
+    id: '7',
     english: [":30", "half past"],
     kanji: "半",
     kanamoji: "はん",

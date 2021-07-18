@@ -3,27 +3,32 @@ import { CYAN, NO_COLOR } from '../utils/constants.ts';
 
 const Locations: Dict = [
   {
+    id: '1',
     english: "tokyo",
     kanji: "東京",
     kanamoji: "とうきょう",
   },
   {
+    id: '2',
     english: "kyoto",
     kanji: "京都",
     kanamoji: "きょうと",
   },
   {
+    id: '3',
     english: "osaka",
     kanji: "大阪",
     kanamoji: "おおさか",
   },
   {
+    id: '4',
     english: "japan",
     kanji: "日本",
     kanamoji: "にほん",
     jlp: 3,
     modifiers: [
       {
+        id: '4-1',
         english: "japanese",
         kanji: "日本語",
         kanamoji: "にほんご",
@@ -35,11 +40,13 @@ const Locations: Dict = [
     ],
   },
   {
+    id: '5',
     english: "china",
     kanji: "中国",
     kanamoji: "ちゅうごく",
   },
   {
+    id: '6',
     english: "south korea",
     kanji: "韓国",
     kanamoji: "かんこく",

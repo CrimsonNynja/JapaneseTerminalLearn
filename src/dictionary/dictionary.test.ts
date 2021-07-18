@@ -3,7 +3,7 @@ import { Dict, DictWord, combineDicts, pullItemAndRemoveFromDict } from "./dicti
 
 Deno.test("combineDicts test", () => {
   Deno.test("run on 1 data point", () => {
-    const word: DictWord = { english: "a", kanamoji: "ア" };
+    const word: DictWord = { id: '1', english: "a", kanamoji: "ア" };
     const chapter: Dict = [word];
     const dict = combineDicts(chapter, chapter);
     assertEquals(dict.length, 1);
@@ -11,11 +11,11 @@ Deno.test("combineDicts test", () => {
   });
 
   Deno.test("run on 2 data points", () => {
-    const word: DictWord = { english: "a", kanamoji: "ア" };
-    const word2: DictWord = { english: "e", kanamoji: "エ" };
-    const word3: DictWord = { english: "i", kanamoji: "イ" };
-    const word4: DictWord = { english: "tokyo", kanamoji: "東京" };
-    const word5: DictWord = { english: "water", kanamoji: "水" };
+    const word: DictWord = { id: '1', english: "a", kanamoji: "ア" };
+    const word2: DictWord = { id: '2', english: "e", kanamoji: "エ" };
+    const word3: DictWord = { id: '3', english: "i", kanamoji: "イ" };
+    const word4: DictWord = { id: '4', english: "tokyo", kanamoji: "東京" };
+    const word5: DictWord = { id: '5', english: "water", kanamoji: "水" };
     const chapter: Dict = [word, word2, word3];
     const chapter2: Dict = [word3, word4, word5];
     const dict = combineDicts(chapter, chapter2);
@@ -25,9 +25,9 @@ Deno.test("combineDicts test", () => {
 });
 
 Deno.test("pullItemAndRemoveFromDict", () => {
-  const word: DictWord = { english: "a", kanamoji: "ア" };
-  const word2: DictWord = { english: "e", kanamoji: "エ" };
-  const word3: DictWord = { english: "i", kanamoji: "イ" };
+  const word: DictWord = { id: '1', english: "a", kanamoji: "ア" };
+  const word2: DictWord = { id: '2', english: "e", kanamoji: "エ" };
+  const word3: DictWord = { id: '3', english: "i", kanamoji: "イ" };
   const chapter: Dict = [word, word2, word3];
   const pulledWord = pullItemAndRemoveFromDict(chapter);
   assertEquals(chapter.length, 2);
