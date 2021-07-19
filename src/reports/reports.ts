@@ -3,8 +3,9 @@ import { write } from "../utils/inputOutput.ts";
 import { RED, GREEN, NO_COLOR, SCRIPT_PATH } from "../utils/constants.ts";
 import { MARKS_NEEDED_FOR_PASS } from "../sensei/sensei.ts";
 import { updateReport } from "./updates/updates.ts";
+import { chapters } from "../dictionary/chapters.ts";
 
-export interface Report {
+export interface OldReport {
   question: {
     english: string | string[];
     kanamoji: string | string[];
@@ -13,7 +14,19 @@ export interface Report {
   markedDate: string;
 }
 
-export const VERSION = 2;
+export interface Report {
+  chapter: string;
+  id: string;
+  marks: number;
+  markedDate: string;
+}
+
+export const VERSION = 3;
+
+export type OldReportCard = {
+  version: number;
+  reports: OldReport[];
+}
 
 export type ReportCard = {
   version: number;
@@ -44,12 +57,12 @@ export const getLastReport = async (): Promise<ReportCard> => {
     createNewReportCardFile();
   })
   if (file) {
-    const reportCard: ReportCard = JSON.parse(file);
+    const reportCard: ReportCard & OldReportCard = JSON.parse(file);
     if (reportCard.version !== VERSION) {
-      write('report card is out of date and needs to be updated!');
+      await write('report card is out of date and needs to be updated!\n');
       return updateReport(reportCard);
     }
-    return reportCard;
+    return <ReportCard>reportCard;
   }
   return defaultReportCard;
 }
@@ -63,8 +76,7 @@ export const getLastReport = async (): Promise<ReportCard> => {
 export const amendReportCard = (reportCard: ReportCard, report: Report): ReportCard => {
   let amended = false;
   reportCard.reports.forEach((item: Report, index: number) => {
-    if (JSON.stringify(item.question.english) === JSON.stringify(report.question.english) &&
-    JSON.stringify(item.question.kanamoji) === JSON.stringify(report.question.kanamoji)) {
+    if (JSON.stringify(item.id) === JSON.stringify(report.id)) {
       reportCard.reports[index].marks += report.marks;
       amended = true;
       if (reportCard.reports[index].marks < 0) {
@@ -87,12 +99,14 @@ export const amendReportCard = (reportCard: ReportCard, report: Report): ReportC
  */
 export const reviewReport = async (reportCard: ReportCard): Promise<void> => {
   for (const report of reportCard.reports) {
+    const chapterWords = chapters[report.chapter].words;
+    const word = chapterWords.find((word) => word.id === report.id);
     if (report.marks >= MARKS_NEEDED_FOR_PASS) {
-      await write(`${GREEN}${JSON.stringify(report.question.kanamoji)}: ${report.marks}${NO_COLOR}\n`);
+      await write(`${GREEN}${JSON.stringify(word?.kanamoji)}: ${report.marks}${NO_COLOR}\n`);
     } else if (report.marks === 0) {
-      await write(`${RED}${JSON.stringify(report.question.kanamoji)}: ${report.marks}${NO_COLOR}\n`);
+      await write(`${RED}${JSON.stringify(word?.kanamoji)}: ${report.marks}${NO_COLOR}\n`);
     } else {
-      await write(`${JSON.stringify(report.question.kanamoji)}: ${report.marks}\n`);
+      await write(`${JSON.stringify(word?.kanamoji)}: ${report.marks}\n`);
     }
   }
 }

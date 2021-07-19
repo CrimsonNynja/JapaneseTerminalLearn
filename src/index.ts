@@ -1,6 +1,6 @@
 import { getLine, write } from "./utils/inputOutput.ts";
-import { pullItemAndRemoveFromDict, createDictionary } from "./dictionary/dictionary.ts";
-import { amendReportCard, getLastReport, writeReport, reviewReport } from "./reports/reports.ts";
+import { pullItemAndRemoveFromDictionary, createDictionary } from "./dictionary/dictionary.ts";
+import { amendReportCard, getLastReport, writeReport, reviewReport, Report } from "./reports/reports.ts";
 import { createExam, isAnswerCorrect, askQuestion } from "./sensei/sensei.ts";
 import { loadSettings } from "./settings/settings.ts";
 import { Command, getCommandType, parseCommandLineArgs } from "./interpreter/interpreter.ts";
@@ -19,8 +19,7 @@ if (commandType === Command.QUIT) {
 }
 
 const dict = createDictionary(settings.includedChapters);
-const test = createExam(dict, reportCard);
-
+const exam = createExam(dict, reportCard);
 const dateObj = new Date();
 const day = ("0" + dateObj.getDate()).slice(-2);
 const month = ("0" + (dateObj.getMonth() + 1)).slice(-2);
@@ -30,17 +29,15 @@ const date = year + "-" + month + "-" + day;
 for (let i = 0; i < settings.questionCount; i++) {
   let answeredCorrectly = false;
   while (answeredCorrectly === false) {
-    const word = pullItemAndRemoveFromDict(test);
-    const question = askQuestion(word);
+    const word = pullItemAndRemoveFromDictionary(exam);
+    const question = askQuestion(word.word);
     write(`enter translation ${question}: `);
     const line = await getLine();
-    if (isAnswerCorrect(word.english, line)) {
+    if (isAnswerCorrect(word.word.english, line)) {
       write("✅ correct!\n");
-      const report = {
-        question: {
-          english: word.english,
-          kanamoji: word.kanamoji,
-        },
+      const report: Report = {
+        chapter: word.chapter,
+        id: word.word.id,
         marks: 1,
         markedDate: date,
       };
@@ -49,12 +46,10 @@ for (let i = 0; i < settings.questionCount; i++) {
     } else if (line === "zz") {
       answeredCorrectly = true;
     } else {
-      write(`❌ correct answer is ${JSON.stringify(word.english)}\n`);
-      const report = {
-        question: {
-          english: word.english,
-          kanamoji: word.kanamoji,
-        },
+      write(`❌ correct answer is ${JSON.stringify(word.word.english)}\n`);
+      const report: Report = {
+        chapter: word.chapter,
+        id: word.word.id,
         marks: -1,
         markedDate: date,
       };

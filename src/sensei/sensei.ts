@@ -1,18 +1,19 @@
 import { ReportCard } from "../reports/reports.ts";
-import { Dict, DictWord } from "../dictionary/dictionary.ts";
+import { Dictionary, Chapter, Word } from "../dictionary/dictionary.ts";
 
 export const MARKS_NEEDED_FOR_PASS = 5;
 export const MARKS_NEEDED_FOR_EXAMPLES = 3;
 
-export const createExam = (dictionary: Dict, reportCard: ReportCard): Dict => {
-  dictionary.forEach((word: DictWord, index: number) => {
+export const createExam = (dictionary: Dictionary, reportCard: ReportCard): Dictionary => {
+  dictionary.forEach((chapter: Chapter, index: number) => {
     reportCard.reports.forEach((report) => {
-      if (
-        word.english === report.question.english &&
-        word.kanamoji === report.question.kanamoji
-      ) {
+      const word = chapter.words.find((item) => item.id === report.id);
+      if (word && word?.id === report.id) {
         if (report.marks >= MARKS_NEEDED_FOR_PASS) {
-          dictionary.splice(index, 1);
+          dictionary[index].words.splice(chapter.words.indexOf(word), 1)
+          if (dictionary[index].words.length === 0) {
+            dictionary.splice(index, 1);
+          }
         }
       }
     });
@@ -34,7 +35,7 @@ export const isAnswerCorrect = (answer: string | string[], given: string): boole
   return false;
 };
 
-export const askQuestion = (word: DictWord): string|string[] => {
+export const askQuestion = (word: Word): string|string[] => {
   let question = word.kanji ? word.kanji : word.kanamoji;
   if (word.example) {
     question = word.example.japanese;

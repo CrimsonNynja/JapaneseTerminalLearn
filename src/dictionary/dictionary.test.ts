@@ -1,35 +1,16 @@
 import { assertArrayIncludes, assertEquals } from "https://deno.land/std@0.99.0/testing/asserts.ts";
-import { Dict, DictWord, combineDicts, pullItemAndRemoveFromDict } from "./dictionary.ts";
+import { Dictionary, Word, Chapter, pullItemAndRemoveFromDictionary } from "./dictionary.ts";
 
-Deno.test("combineDicts test", () => {
-  Deno.test("run on 1 data point", () => {
-    const word: DictWord = { id: '1', english: "a", kanamoji: "ア" };
-    const chapter: Dict = [word];
-    const dict = combineDicts(chapter, chapter);
-    assertEquals(dict.length, 1);
-    assertArrayIncludes(dict, [word]);
-  });
-
-  Deno.test("run on 2 data points", () => {
-    const word: DictWord = { id: '1', english: "a", kanamoji: "ア" };
-    const word2: DictWord = { id: '2', english: "e", kanamoji: "エ" };
-    const word3: DictWord = { id: '3', english: "i", kanamoji: "イ" };
-    const word4: DictWord = { id: '4', english: "tokyo", kanamoji: "東京" };
-    const word5: DictWord = { id: '5', english: "water", kanamoji: "水" };
-    const chapter: Dict = [word, word2, word3];
-    const chapter2: Dict = [word3, word4, word5];
-    const dict = combineDicts(chapter, chapter2);
-    assertEquals(dict.length, 5);
-    assertArrayIncludes(dict, [word, word2, word3, word4, word5]);
-  });
-});
-
-Deno.test("pullItemAndRemoveFromDict", () => {
-  const word: DictWord = { id: '1', english: "a", kanamoji: "ア" };
-  const word2: DictWord = { id: '2', english: "e", kanamoji: "エ" };
-  const word3: DictWord = { id: '3', english: "i", kanamoji: "イ" };
-  const chapter: Dict = [word, word2, word3];
-  const pulledWord = pullItemAndRemoveFromDict(chapter);
-  assertEquals(chapter.length, 2);
+Deno.test("pullItemAndRemoveFromDictionary", () => {
+  const word: Word = { id: '1', english: "a", kanamoji: "ア" };
+  const word2: Word = { id: '2', english: "e", kanamoji: "エ" };
+  const word3: Word = { id: '3', english: "i", kanamoji: "イ" };
+  const chapter: Chapter = {
+    name: 'test',
+    words: [word, word2, word3],
+  };
+  const dictionary: Dictionary = [chapter];
+  const pulledWord = pullItemAndRemoveFromDictionary(dictionary);
+  assertEquals(chapter.words.length, 2);
   assertArrayIncludes([word, word2, word3], [pulledWord]);
 });

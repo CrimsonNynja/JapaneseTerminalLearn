@@ -1,48 +1,48 @@
 import { chapters } from "./chapters.ts";
 
-export interface DictWord {
+export interface Word {
   id: string;
   english: string | string[];
   kanji?: string;
   kanamoji: string | string[];
   jlp?: number;
-  modifiers?: DictWord[];
+  modifiers?: Word[];
   example?: {
     japanese: string;
     english: string|string[];
   }
 }
 
-export type Dict = DictWord[];
+export type Chapter = {
+  name: string;
+  words: Word[];
+}
 
-export const combineDicts = (dict1: Dict, dict2: Dict): Dict => {
-  const dict: Dict = [
-    ...dict1,
-    ...dict2,
-  ];
+export type Dictionary = Chapter[];
 
-  return dict.filter((word: DictWord, index: number, self: DictWord[]) =>
-    index === self.findIndex((word2: DictWord) => (
-      word2.kanamoji === word.kanamoji
-    ))
-  );
-};
+export const pullItemAndRemoveFromDictionary = (dictionary: Dictionary): { word: Word, chapter: string } => {
+  const chapter = Math.floor(Math.random() * dictionary.length);
+  const words = dictionary[chapter].words;
+  const word = words[Math.floor(Math.random() * words.length)];
 
-export const pullItemAndRemoveFromDict = (dict: Dict): DictWord => {
-  const item: DictWord = dict[Math.floor(Math.random() * dict.length)];
-
-  const index = dict.indexOf(item);
+  const index = dictionary[chapter].words.indexOf(word);
   if (index !== -1) {
-    dict.splice(index, 1);
+    dictionary[chapter].words.splice(index, 1);
+    if (dictionary[chapter].words.length === 0) {
+      dictionary.splice(chapter, 1);
+    }
   }
 
-  return item;
+  return {
+    chapter: dictionary[chapter].name,
+    word,
+  };
 };
 
-export const createDictionary = (chaptersToAdd: string[]): Dict => {
-  let dictionary: Dict = [];
+export const createDictionary = (chaptersToAdd: string[]): Dictionary => {
+  const dictionary: Dictionary = [];
   chaptersToAdd.forEach((chapter: string) => {
-    dictionary = combineDicts(dictionary, chapters[chapter]);
+    dictionary.push(chapters[chapter]);
   });
   return dictionary;
 };
