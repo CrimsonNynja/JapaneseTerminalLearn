@@ -1,5 +1,7 @@
 # JapaneseTerminalLearn
 
+[![Deno](https://github.com/CrimsonNynja/JapaneseTerminalLearn/actions/workflows/deno.yml/badge.svg)](https://github.com/CrimsonNynja/JapaneseTerminalLearn/actions/workflows/deno.yml)
+
 This is simply a learning tool to me learn japanese kanji and words through the terminal.
 
 I am mainly using this for my own learning, so as such, not all words will be in
