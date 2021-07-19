@@ -12,5 +12,5 @@ Deno.test("pullItemAndRemoveFromDictionary", () => {
   const dictionary: Dictionary = [chapter];
   const pulledWord = pullItemAndRemoveFromDictionary(dictionary);
   assertEquals(chapter.words.length, 2);
-  assertArrayIncludes([word, word2, word3], [pulledWord]);
+  assertArrayIncludes([word, word2, word3], [pulledWord.word]);
 });
