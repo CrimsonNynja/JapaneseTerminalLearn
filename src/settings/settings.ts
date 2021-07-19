@@ -10,7 +10,7 @@ export type Settings = {
 
 const settingsFilePath: string = normalize(`${SCRIPT_PATH}../../settings.json`);
 
-const defaultSettings: Settings = {
+export const defaultSettings: Settings = {
   questionCount: 1,
   activationCommands: ["pwd"],
   includedChapters: ["Hiragana", "Katakana"],
@@ -21,8 +21,8 @@ const defaultSettings: Settings = {
  * @returns {Promise<Settings>} the loaded settings
  */
 export const loadSettings = async (): Promise<Settings> => {
-  const file = await Deno.readTextFile(settingsFilePath).catch(() => {
-    createNewSettingsFile();
+  const file = await Deno.readTextFile(settingsFilePath).catch(async () => {
+    await createNewSettingsFile();
   });
   if (file) {
     return JSON.parse(file);
@@ -34,13 +34,13 @@ export const loadSettings = async (): Promise<Settings> => {
  * saves the given settings file
  * @param {Settings} settings the file to save
  */
-export const saveSettings = async (settings: Settings) => {
+export const saveSettings = async (settings: Settings): Promise<void> => {
   await Deno.writeTextFile(settingsFilePath, JSON.stringify(settings));
 }
 
 /**
  * creates a new settings file at the root of the project with default values
  */
-export const createNewSettingsFile = async () => {
+export const createNewSettingsFile = async (): Promise<void> => {
   await Deno.writeTextFile(settingsFilePath, JSON.stringify(defaultSettings));
 };

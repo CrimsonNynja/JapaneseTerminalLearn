@@ -1,4 +1,4 @@
-import { assertArrayIncludes, assertEquals } from "https://deno.land/std@0.99.0/testing/asserts.ts";
+import { assertArrayIncludes, assertEquals } from "https://deno.land/std@0.101.0/testing/asserts.ts";
 import { Dictionary, Word, Chapter, pullItemAndRemoveFromDictionary } from "./dictionary.ts";
 
 Deno.test("pullItemAndRemoveFromDictionary", () => {

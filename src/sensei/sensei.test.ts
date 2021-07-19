@@ -1,4 +1,4 @@
-import { assertEquals } from "https://deno.land/std@0.99.0/testing/asserts.ts";
+import { assertEquals } from "https://deno.land/std@0.101.0/testing/asserts.ts";
 import { isAnswerCorrect, askQuestion } from "./sensei.ts";
 import { Word } from "../dictionary/dictionary.ts";
 
