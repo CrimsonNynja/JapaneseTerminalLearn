@@ -1,6 +1,6 @@
 import { ReportCard, OldReportCard, OldReport, VERSION } from "../reports.ts";
 import { chapters } from "../../dictionary/chapters.ts";
-import { write } from "../../utils/inputOutput.ts";
+import { write } from "../../inputOutput/inputOutput.ts";
 
 export const updateReport = (reportCard: OldReportCard | ReportCard): ReportCard => {
   let ret: OldReportCard | ReportCard = reportCard;

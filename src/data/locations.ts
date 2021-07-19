@@ -1,5 +1,5 @@
 import { Chapter } from "../dictionary/dictionary.ts";
-import { CYAN, NO_COLOR } from '../utils/constants.ts';
+import { CYAN, NO_COLOR } from '../constants/constants.ts';
 
 const Locations: Chapter = {
   name: 'Locations',

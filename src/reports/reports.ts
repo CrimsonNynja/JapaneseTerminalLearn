@@ -1,6 +1,6 @@
 import { normalize } from "https://deno.land/std@0.99.0/path/mod.ts";
-import { write } from "../utils/inputOutput.ts";
-import { RED, GREEN, NO_COLOR, SCRIPT_PATH } from "../utils/constants.ts";
+import { write } from "../inputOutput/inputOutput.ts";
+import { RED, GREEN, NO_COLOR, SCRIPT_PATH } from "../constants/constants.ts";
 import { MARKS_NEEDED_FOR_PASS } from "../sensei/sensei.ts";
 import { updateReport } from "./updates/updates.ts";
 import { chapters } from "../dictionary/chapters.ts";

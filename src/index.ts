@@ -1,4 +1,4 @@
-import { getLine, write } from "./utils/inputOutput.ts";
+import { getLine, write } from "./inputOutput/inputOutput.ts";
 import { pullItemAndRemoveFromDictionary, createDictionary } from "./dictionary/dictionary.ts";
 import { amendReportCard, getLastReport, writeReport, reviewReport, Report } from "./reports/reports.ts";
 import { createExam, isAnswerCorrect, askQuestion } from "./sensei/sensei.ts";

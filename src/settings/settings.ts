@@ -1,5 +1,5 @@
 import { normalize } from "https://deno.land/std@0.99.0/path/mod.ts";
-import { SCRIPT_PATH } from "../utils/constants.ts";
+import { SCRIPT_PATH } from "../constants/constants.ts";
 
 export type Settings = {
   questionCount: number;
