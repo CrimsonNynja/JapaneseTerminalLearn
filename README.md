@@ -10,7 +10,7 @@ This is written in typescript, using [Deno](https://deno.land/)
 to run the program
 
 ```bash
-deno run --allow-write --allow-read ./src/index.ts
+deno run --allow-write --allow-read --allow-write --allow-read ./src/index.ts
 ```
 
 This will create for you an empty `reportCard.json` and `settings.json` files at the root of your project files. The settings file should be edited to suit your own needs as describe here:
