@@ -1,26 +1,26 @@
 import { chapters } from "./chapters.ts";
 
+type ID = string;
+
 export interface Word {
-  id: string;
-  english: string | string[];
+  id: ID;
   kanji?: string;
-  kanamoji: string | string[];
-  jlp?: number;
-  modifiers?: Word[];
-  example?: {
-    japanese: string;
-    english: string|string[];
-  }
+  kanamoji: string|string[];
+  english: string[];
+  kunyomi?: string[];
+  onyomi?: string[];
+  jlpt?: number;
+  example?: string;
+  contains?: ID[];
 }
 
 export type Chapter = {
-  name: string;
   words: Word[];
 }
 
 export type Dictionary = Chapter[];
 
-export const pullItemAndRemoveFromDictionary = (dictionary: Dictionary): { word: Word, chapter: string } => {
+export const pullItemAndRemoveFromDictionary = (dictionary: Dictionary): Word => {
   const chapter = Math.floor(Math.random() * dictionary.length);
   const words = dictionary[chapter].words;
   const word = words[Math.floor(Math.random() * words.length)];
@@ -33,10 +33,7 @@ export const pullItemAndRemoveFromDictionary = (dictionary: Dictionary): { word:
     }
   }
 
-  return {
-    chapter: dictionary[chapter].name,
-    word,
-  };
+  return word;
 };
 
 export const createDictionary = (chaptersToAdd: string[]): Dictionary => {

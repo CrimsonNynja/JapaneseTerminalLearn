@@ -15,13 +15,12 @@ export interface OldReport {
 }
 
 export interface Report {
-  chapter: string;
   id: string;
   marks: number;
   markedDate: string;
 }
 
-export const VERSION = 3;
+export const VERSION = 4;
 
 export type OldReportCard = {
   version: number;
@@ -35,7 +34,7 @@ export type ReportCard = {
 
 const reportFilePath: string = normalize(`${SCRIPT_PATH}../../reportCard.json`);
 
-const defaultReportCard: ReportCard = {
+export const defaultReportCard: ReportCard = {
   version: VERSION,
   reports: [],
 };
@@ -99,8 +98,8 @@ export const amendReportCard = (reportCard: ReportCard, report: Report): ReportC
  */
 export const reviewReport = async (reportCard: ReportCard): Promise<void> => {
   for (const report of reportCard.reports) {
-    const chapterWords = chapters[report.chapter].words;
-    const word = chapterWords.find((word) => word.id === report.id);
+    const chapter = report.id.split('-')[0];
+    const word = chapters[chapter].words.find((word) => word.id === report.id);
     if (report.marks >= MARKS_NEEDED_FOR_PASS) {
       await write(`${GREEN}${JSON.stringify(word?.kanamoji)}: ${report.marks}${NO_COLOR}\n`);
     } else if (report.marks === 0) {

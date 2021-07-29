@@ -38,7 +38,7 @@ export const isAnswerCorrect = (answer: string | string[], given: string): boole
 export const askQuestion = (word: Word): string|string[] => {
   let question = word.kanji ? word.kanji : word.kanamoji;
   if (word.example) {
-    question = word.example.japanese;
+    question = word.example;
   }
   return question;
 };

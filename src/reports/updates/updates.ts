@@ -1,4 +1,4 @@
-import { ReportCard, OldReportCard, OldReport, VERSION } from "../reports.ts";
+import { ReportCard, OldReportCard, OldReport, VERSION, defaultReportCard } from "../reports.ts";
 import { chapters } from "../../dictionary/chapters.ts";
 import { write } from "../../inputOutput/inputOutput.ts";
 
@@ -9,6 +9,9 @@ export const updateReport = (reportCard: OldReportCard | ReportCard): ReportCard
   }
   if (ret.version === 2) {
     ret = twoToThree(<OldReportCard>ret);
+  }
+  if (ret.version === 3) {
+    ret = defaultReportCard;
   }
   write("updated!\n");
   return <ReportCard>ret;
@@ -55,7 +58,7 @@ const twoToThree = (reportCard: OldReportCard): ReportCard => {
         if (JSON.stringify(word.english) === JSON.stringify(report.question.english)
         && JSON.stringify(word.kanamoji) === JSON.stringify(report.question.kanamoji)) {
           updatedReport.reports.push({
-            chapter: chapter.name,
+            // chapter: chapter.name,
             id: word.id,
             marks: report.marks,
             markedDate: report.markedDate,

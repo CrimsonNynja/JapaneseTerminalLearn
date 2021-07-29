@@ -30,14 +30,13 @@ for (let i = 0; i < settings.questionCount; i++) {
   let answeredCorrectly = false;
   while (answeredCorrectly === false) {
     const word = pullItemAndRemoveFromDictionary(exam);
-    const question = askQuestion(word.word);
+    const question = askQuestion(word);
     write(`enter translation ${question}: `);
     const line = await getLine();
-    if (isAnswerCorrect(word.word.english, line)) {
+    if (isAnswerCorrect(word.english, line)) {
       write("✅ correct!\n");
       const report: Report = {
-        chapter: word.chapter,
-        id: word.word.id,
+        id: word.id,
         marks: 1,
         markedDate: date,
       };
@@ -46,10 +45,9 @@ for (let i = 0; i < settings.questionCount; i++) {
     } else if (line === "zz") {
       answeredCorrectly = true;
     } else {
-      write(`❌ correct answer is ${JSON.stringify(word.word.english)}\n`);
+      write(`❌ correct answer is ${JSON.stringify(word.english)}\n`);
       const report: Report = {
-        chapter: word.chapter,
-        id: word.word.id,
+        id: word.id,
         marks: -1,
         markedDate: date,
       };

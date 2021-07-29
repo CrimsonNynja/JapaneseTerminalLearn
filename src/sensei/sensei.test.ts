@@ -12,23 +12,21 @@ Deno.test('isAnswerCorrect', () => {
 Deno.test('askQuestion', () => {
   const word: Word = {
     id: '1',
-    english: 'english',
+    english: ['english'],
     kanamoji: 'kanamoji'
   };
   const word2: Word = {
     id: '1',
-    english: 'english',
+    english: ['english'],
     kanamoji: 'kanamoji',
     kanji: 'kanji',
   };
   const word3: Word = {
     id: '1',
-    english: 'english',
+    english: ['english'],
     kanamoji: 'kanamoji',
-    example: {
-      japanese: 'example',
-      english: 'english',
-    }
+    example: 'example',
+
   };
 
   assertEquals(askQuestion(word), 'kanamoji');

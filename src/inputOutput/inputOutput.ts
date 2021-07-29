@@ -1,4 +1,4 @@
-import { writeAll } from "https://deno.land/std@0.99.0/io/util.ts";
+import { writeAll } from "https://deno.land/std@0.102.0/io/util.ts";
 
 export const getLine = async () => {
   const buffer: Uint8Array = new Uint8Array(1024);
